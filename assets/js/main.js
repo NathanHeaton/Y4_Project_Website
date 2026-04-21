@@ -24,19 +24,17 @@ function createFloatingAsset(initialX = 0) {
     asset.className = 'floating-asset';
     
     // 2. Randomize Position & Scale
-    const startY = Math.random()  * 490 + 10;
+    const startY = Math.random()  * 490 + 5;
     const size = Math.random() * (200 - 100) + 500; 
-    const duration = Math.random() * (17 - 15) + 20; 
+    const duration = Math.random() * (17 - 15) + 40; 
     const bobSpeed = Math.random() * (5 - 2) + 12; 
     
     asset.style.top = `${startY}vh`;
     asset.style.width = `${size}px`;
-	asset.style.right = `${initialX}`;
+	asset.style.left = `${initialX}`;
     
-    // 3. Apply Animations
-    // Combined: move left across screen + bob up and down
     asset.style.animation = `
-        scrollLeft ${duration}s linear forwards, 
+        scrollLeft ${duration}s ease-in-out forwards, 
         floatUp ${bobSpeed}s ease-in-out infinite
     `;
     

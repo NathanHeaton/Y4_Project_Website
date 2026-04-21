@@ -303,7 +303,7 @@ article.expanded .full-content {
 .floating-asset {
     position: absolute;
     right: -100px; /* Start off-screen to the right */
-    opacity: 1; /* Sublte transparency */    user-select: none;
+    opacity: .8; /* Sublte transparency */    user-select: none;
 filter: contrast(106%) saturate(100%) drop-shadow(0px 50px 9px rgba(0,0,0,0.5));
     will-change: transform;
 }
@@ -316,14 +316,14 @@ filter: contrast(106%) saturate(100%) drop-shadow(0px 50px 9px rgba(0,0,0,0.5));
 
 @keyframes scrollLeft {
     0% { 
-        left: 110vw; 
+        left: 100vw; 
         opacity: 0; 
     }
     10% { 
-        opacity: .9; /* Fade in quickly at the start */
+        opacity: .8; /* Fade in quickly at the start */
     }
     90% { 
-        opacity: .9; /* Stay visible most of the way */
+        opacity: .8; /* Stay visible most of the way */
     }
     100% { 
         left: -10vw; 

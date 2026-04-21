@@ -4,6 +4,57 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+const floatingContainer = document.getElementById('floating-container');
+
+// List of your image paths (Add your actual note icons here)
+const assets = [
+    'images/floating1.png', 
+    'images/floating2.png', 
+    'images/floatingNever.png',
+    'images/floatingTokyo.png'
+];
+
+function createFloatingAsset(initialX = 0) {
+	console.log("creating");
+    const asset = document.createElement('img');
+    
+    // 1. Randomize Asset
+    const randomImg = assets[Math.floor(Math.random() * assets.length)];
+    asset.src = randomImg;
+    asset.className = 'floating-asset';
+    
+    // 2. Randomize Position & Scale
+    const startY = Math.random()  * 490 + 10;
+    const size = Math.random() * (200 - 100) + 500; 
+    const duration = Math.random() * (17 - 15) + 20; 
+    const bobSpeed = Math.random() * (5 - 2) + 12; 
+    
+    asset.style.top = `${startY}vh`;
+    asset.style.width = `${size}px`;
+	asset.style.right = `${initialX}`;
+    
+    // 3. Apply Animations
+    // Combined: move left across screen + bob up and down
+    asset.style.animation = `
+        scrollLeft ${duration}s linear forwards, 
+        floatUp ${bobSpeed}s ease-in-out infinite
+    `;
+    
+    floatingContainer.appendChild(asset);
+    
+    // 4. Cleanup: Remove after it finishes scrolling
+    setTimeout(() => {
+        asset.remove();
+    }, duration * 1500);
+}
+
+setInterval(createFloatingAsset, 1800);
+
+// Spawn a few immediately on load
+for(let i = 0; i < 3; i++) {
+    setTimeout(createFloatingAsset(-800), Math.random() * 500);
+}
+
 
 (function($) {
 

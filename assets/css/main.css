@@ -2682,10 +2682,10 @@ input, select, textarea {
 		}
 
 		ul.actions.special {
-			-moz-justify-content: center;
-			-webkit-justify-content: center;
-			-ms-justify-content: center;
-			justify-content: center;
+			-moz-justify-content: left;
+			-webkit-justify-content: left;
+			-ms-justify-content: left;
+			justify-content: left;
 			width: 100%;
 			margin-left: 0;
 		}
@@ -2755,7 +2755,7 @@ input, select, textarea {
 					-ms-flex-shrink: 1;
 					flex-shrink: 1;
 					padding: 1rem 0 0 0;
-					text-align: center;
+					text-align: left;
 					width: 100%;
 				}
 
@@ -2808,7 +2808,7 @@ input, select, textarea {
 				height: 2.25rem;
 				line-height: 2.25rem;
 				display: inline-block;
-				text-align: center;
+				text-align: left;
 				border-radius: 100%;
 				font-size: 1.25rem;
 			}
@@ -2891,7 +2891,7 @@ input, select, textarea {
 /* Section/Article */
 
 	section.special, article.special {
-		text-align: center;
+		text-align: left;
 	}
 
 	header {
@@ -3844,12 +3844,12 @@ input, select, textarea {
 			}
 
 			#main > .posts > * {
-				padding: 4rem;
+				padding: 1rem 3em;
 				width: 50%;
 			}
 
 			#main > .posts > article {
-				text-align: center;
+				text-align: left;
 			}
 
 				#main > .posts > article > :last-child {

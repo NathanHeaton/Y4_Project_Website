@@ -230,11 +230,13 @@ header.major > .date:after {
 /* ── UPDATED EXPANDED CONTENT PADDING ────────────────────── */
 
 article.expanded .full-content {
-    display: block;
+	display: flex;
     opacity: 1;
     margin-top: 2rem;
     /* Added padding to prevent content from touching the article borders */
     padding: 1rem 2rem; 
+	flex-direction: row;
+	flex-wrap: wrap;
     border-top: 1px solid var(--col-border);
     transition: opacity 0.5s ease-in;
 }
@@ -263,23 +265,71 @@ article.expanded {
     background-color: #162235 !important;
     padding-bottom: 3rem;
     z-index: 10;
+
 }
 
 /* Internal content logic */
 article .full-content {
     display: none; /* Hide completely when not expanded */
     opacity: 0;
+	
 }
 
 article.expanded .full-content {
-    display: block;
+	display: flex;
     max-height: none; /* Let the content define the height */
+	flex-direction: row;
+	flex-wrap: wrap;
     opacity: 1;
     margin-top: 2rem;
     padding: 2rem;
     transition: opacity 0.5s ease-in;
 }
 
+/* ── FLOATING ASSETS ────────────────────────────────────── */
+
+
+#floating-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Matches the intro height */
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1; /* Sits behind intro text but above background */
+}
+
+.floating-asset {
+    position: absolute;
+    right: -100px; /* Start off-screen to the right */
+    opacity: 1; /* Sublte transparency */    user-select: none;
+filter: contrast(106%) saturate(100%) drop-shadow(0px 50px 9px rgba(0,0,0,0.5));
+    will-change: transform;
+}
+
+/* The vertical "bobbing" motion */
+@keyframes floatUp {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+@keyframes scrollLeft {
+    0% { 
+        left: 110vw; 
+        opacity: 0; 
+    }
+    10% { 
+        opacity: .9; /* Fade in quickly at the start */
+    }
+    90% { 
+        opacity: .9; /* Stay visible most of the way */
+    }
+    100% { 
+        left: -10vw; 
+        opacity: 0; /* Smoothly fade to nothing */
+    }
+}
 /* Mobile Responsiveness */
 @media screen and (max-width: 980px) {
     #main > .posts {

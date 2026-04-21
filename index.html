@@ -18,9 +18,9 @@
 <body class="is-preload">
 
     <div id="wrapper" class="fade-in">
-
+	<div id="floating-container"></div>
         <div id="intro">
-            <h1>MIDI<br />Sequence<br />Editor</h1>
+            <h1>MIDI Sequence<br />Editor</h1>
             <p>A final year project by <strong>Nathan Heaton</strong> — C00286899<br />
                 Building a modern, accessible piano roll editor from the ground up.</p>
             <ul class="actions">
@@ -50,9 +50,8 @@
                     <p>Software for editing and creating MIDI sequences, combining strong technical engineering with a focus on UX/UI design. The project explores what it means to build a real creative tool — not just functional software, but something musicians would actually want to use.</p>
                 </header>
                 <a href="about.html" class="image main"><img src="images/hero_image.png" alt="MIDI Sequence Editor piano roll interface" /></a>
-                <ul class="actions special">
-                    <li><a href="about.html" class="button large">Read More</a></li>
-                </ul>
+				<a href="about.html" class="button large">Read More</a>
+
             </section>
 
             <section class="posts">
@@ -108,18 +107,13 @@
 
                     <div class="full-content">
                         <div class="row">
-                            <div class="col-6 col-12-small">
+                            <div class="col-12 col-12-small">
                                 <h3>The Pattern Engine</h3>
                                 <ul>
                                     <li><strong>Unique 32-bit IDs:</strong> Every MIDI event is tracked by ID rather than index, preventing data corruption during real-time sorts.</li>
                                     <li><strong>High-Res Timing:</strong> Internal resolution of 960 PPQ allows for precise 1/32 note snapping and "free-time" recording.</li>
                                     <li><strong>Pairing Logic:</strong> A specialized <code>NoteEventPair</code> system links on/off events to ensure zero-stray notes.</li>
                                 </ul>
-                            </div>
-                            <div class="col-6 col-12-small">
-                                <div class="video-container">
-                                    <div class="video-placeholder">Video: Multi-Note Selection & Scaling</div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,7 +134,6 @@
                         </video>
                     </div>
                     <p>Custom C++ logic for reading Standard MIDI Files at the byte level, supporting Format 0 and Format 1.</p>
-
                     <div class="full-content">
                         <div class="row">
                             <div class="col-12 col-12-small">
@@ -168,7 +161,7 @@
 
                     <div class="full-content">
                         <div class="row">
-                            <div class="col-6 col-12-small">
+                            <div class="col-12 col-12-small">
                                 <h3>Signal Path Logic</h3>
                                 <ul>
                                     <li><strong>Buffer Management:</strong> Midi buffer is populated based on pattern or arranger playback.
@@ -184,6 +177,71 @@
                     </ul>
                 </article>
 
+				<article class="feature-article ">
+                    <header>
+                        <span class="date">Design</span>
+                        <h2><a href="javascript:void(0)">Wireframes</a></h2>
+                    </header>
+						<div class="video-container">
+						<img class="image fit" src="images/tracks v3.jpg">
+                    </div>
+                    <p>Showcase of design process, from early stage to fnished product. Elements design in figma</p>
+                    <div class="full-content">
+                        <div class="row">
+                            <div class="col-6 col-12-small">
+                                <h3>Research</h3>
+									<p>I started off by researching other midi and step sequncers, for basic minmial projects,
+										 to full professional DAWs. Test different DAWs interaction note placing, importing. Broke down common their visual architecture and flow. </p>
+                            </div>
+                            <div class="col-6 col-12-small">
+								<img class="image fit" src="images/References.png">
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-6 col-12-small">
+   								<h3>WireFraming - low Fidelty</h3>
+								<p>Started off with simple box to get a feel for layout, experiment with many different colours shceme but settle on mono tone blue look, with orrange accents</p>
+							</div>		
+							<div class="col-6 col-12-small">
+								<img class="image fit" src="images/tracks.jpg">
+							</div>					
+						</div>
+						<div class="row">
+							<div class="col-6 col-12-small">
+								<img class="image fit" src="images/tracks2.jpg">
+							</div>
+							<div class="col-6 col-12-small">
+								<img class="image fit" src="images/track_designs.jpg">
+							</div>
+                        </div>
+						<div class="row">
+							<div class="col-6 col-12-small">
+   								<h3>Piano Roll Designs</h3>
+								<p>This was the most import thing to get correct this is where the most interaction takes place. 
+									The area that proved most diffiult was bar, beat, subeat and pitch lines lightness and hue
+									 and to be balanced so that each line is unique in tone and also cohesive as a whole. To create 
+									 more speration in I shift the hues and saturation of the highest level lines (bar & octave)
+									<br>DAWs have many different way of visualising their piano some stack evenely spaced white
+									  and black bars, and some go for something inbetween, keeping a piano look while subtly resizing blocks to fit the grid.
+									I went for the more accurate approach meaning octaves have perfect alignment but notes in between are slightly off. </p>
+							</div>		
+							<div class="col-6 col-12-small">
+								<img class="image fit" src="images/Midi pattern window v3.jpg">
+							</div>					
+						</div>
+						<div class="row">
+							<div class="col-12 col-12-small">
+								<h3>Full Figma Page</h3>
+								<p>To see designs and iteration more deeply you can look at my <a href="https://www.figma.com/design/Rw2AqYbRbayn0j8poMgj72/Midi-Sequence-Editor?node-id=113-225&t=zyxl4vQd29Ev7e4e-1">
+								figma page</a></p>
+
+							</div>
+                        </div>
+                    </div>
+                    <ul class="actions special">
+                        <li><a href="javascript:void(0)" class="button learn-more-btn">Learn More</a></li>
+                    </ul>
+                </article>
             </section>
 
             <footer>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>About — MIDI Sequence Editor</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<div id="wrapper">
+
+			<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="logo">MSE</a>
+			</header>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="index.html">Project</a></li>
+					<li class="active"><a href="about.html">About</a></li>
+					
+				</ul>
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</nav>
+
+			<!-- Main -->
+			<div id="main">
+
+				<section class="post">
+					<header class="major">
+						<span class="date">C00286899 — SETU Carlow</span>
+						<h1>About the<br />Project</h1>
+					</header>
+
+					<h2>Project Overview</h2>
+					<p>This project is a desktop Digital Audio Workstation (DAW) built in C++20, designed to bridge the gap between low-level audio processing and high-level UI responsiveness. By combining the <strong>JUCE framework</strong> for audio/MIDI I/O with <strong>Dear ImGui</strong> for a high-performance immediate-mode interface, the application provides a fluid, real-time environment for musical composition.</p>
+
+					<h2>MVP Goals</h2>
+					<p>The core experience focuses on precise MIDI sequencing and multi-track arrangement:</p>
+					<ul>
+						<li><strong>Interactive Piano Roll:</strong> A high-resolution editor featuring note drawing, stretching, scaling, moving, and box selection.</li>
+						<li><strong>Multi-Track Arranger:</strong> A timeline view for placing, moving, and resizing Pattern Clips across multiple tracks.</li>
+						<li><strong>Real-Time Playback:</strong> Dual-stream output via an internal 8-voice polyphonic sine-synth, supports importing & sampling any audio files</li>
+						<li><strong>MIDI Integration:</strong> Full support for importing Standard MIDI Files (Format 0 and 1) with automatic PPQ scaling.</li>
+					</ul>
+
+					<h2>Technical Architecture</h2>
+					<p>The application follows a <strong>State-Driven Singleton</strong> pattern, ensuring the UI remains a stateless representation of the underlying data model. This architecture enables seamless synchronization between the visual playhead and the audio engine.</p>
+
+					<h3>Core Subsystems</h3>
+					<ul>
+						<li><strong>Manager Singletons:</strong> Centralized managers (Pattern, Arranger, Playback, ViewState) handle all state mutations, allowing UI components to remain "pure" and reactive.</li>
+						<li><strong>Immediate-Mode GUI (ImGui):</strong> All interface elements, from the piano roll grid to custom track gradients, are re-rendered every frame using low-level <code>ImDrawList</code> calls.</li>
+						<li><strong>High-Resolution Timing:</strong> A 960 PPQ (Parts Per Quarter-note) internal resolution ensures micro-timing accuracy and artifact-free snapping.</li>
+					</ul>
+
+					<h2>Data Model & MIDI Logic</h2>
+					<p>Unlike standard MIDI implementations, this project utilizes a custom <strong>ID-based event system</strong> to ensure stability during complex editing operations.</p>
+					<ul>
+						<li><strong>Note Persistence:</strong> Every MIDI event is assigned a unique 32-bit ID, making the system robust to insertions and deletions that would typically break index-based arrays.</li>
+						<li><strong>Ghost Note System:</strong> A specialized rendering layer that handles "ghost" previews during move/stretch operations, providing instant visual feedback without mutating the primary data until a gesture is committed.</li>
+						<li><strong>Precision Playback:</strong> A 1ms polling <code>juce::Timer</code> drives the <code>MidiPlayer</code>, converting tick-based data to high-resolution system timestamps for jitter-free performance.</li>
+					</ul>
+
+					<h2>UX & Design Process</h2>
+					<p>Design is treated as a first-class citizen. The workflow includes wireframing in Figma and user journey mapping to ensure the tool-based interaction (Edit, Select, Snip, Move) feels intuitive to veterans of industry-standard DAWs like FL Studio or Ableton Live.</p>
+
+					<h2>Advanced Features & Stretch Goals</h2>
+					<p>With the core engine stabilized, the project is expanding into deeper signal processing:</p>
+					<ul>
+						<li><strong>Proportional Scaling:</strong> A dedicated widget for time-stretching entire selections of notes.</li>
+						<li><strong>Internal DSP:</strong> Expanding the <code>SineWaveVoice</code> implementation to include ADSR envelopes and basic filter structures.</li>
+						<li><strong>Timeline Auto-Expansion:</strong> A dynamic arranger that scales the project length in real-time as the user approaches the end of the timeline.</li>
+					</ul>
+					<h2>Motivation & Goals</h2>
+					<p>The motivation comes from a genuine interest in MIDI processing and DAWs. Building creative software tools is a distinct UX challenge
+						 — the user is both a technical operator and an artist — and that tension is what makes the problem interesting. 
+						 The project will significantly deepen skills in C++, low-level MIDI protocol knowledge, and practical interface design.</p>
+
+					<h2>Research</h2>
+					<p>The project is grounded in existing literature on MIDI systems and music production tooling:</p>
+					<ul>
+						
+						<li><a href="https://www.sciencedirect.com/science/article/pii/S2772941925001103" target="_blank">Quantitative Analysis of MIDI Sequence Editors for Electronic Music Production</a></li>
+						<li><a href="https://midi.org/midi-1-0-detailed-specification" target="_blank">MIDI 1.0 Detailed Specification — midi.org</a></li>
+						<li><a href="https://cs.gmu.edu/~sean/papers/modulelevelmidi.pdf" target="_blank">Module-Level MIDI — Sean Luke, George Mason University</a></li>
+					</ul>
+
+				</section>
+
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<section>
+					<h3>Project Overview</h3>
+					<p>This site documents the development of a MIDI Sequence Editor built as a final year project at SETU Carlow. The project spans software architecture, low-level MIDI programming, and human-centred UX design.</p>
+					<ul class="actions">
+						<li><a href="index.html" class="button">Back to Project</a></li>
+					</ul>
+				</section>
+				<section class="split contact">
+					<section class="alt">
+						<h3>Institution</h3>
+						<p>South East Technological University<br />Carlow, Ireland</p>
+					</section>
+					<section>
+						<h3>Student</h3>
+						<p>Nathan Heaton<br />C00286899</p>
+					</section>
+					<section>
+						<h3>Research</h3>
+						<p>
+							<a href="https://www.sciencedirect.com/science/article/pii/S2772941925001103" target="_blank">MIDI Systems Paper</a><br />
+							<a href="https://midi.org/midi-1-0-detailed-specification" target="_blank">MIDI 1.0 Spec</a><br />
+							<a href="https://cs.gmu.edu/~sean/papers/modulelevelmidi.pdf" target="_blank">Module-Level MIDI</a>
+						</p>
+					</section>
+					<section>
+						<h3>Source</h3>
+						<ul class="icons alt">
+							<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</section>
+				</section>
+			</footer>
+
+			<div id="copyright">
+				<ul>
+					<li>&copy; Nathan Heaton 2025</li>
+					<li>Final Year Project — SETU Carlow</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

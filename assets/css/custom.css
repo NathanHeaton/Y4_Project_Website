@@ -1,0 +1,536 @@
+/*
+	MIDI Sequence Editor — Custom Styles
+	Nathan Heaton, C00286899
+	Colours: #84A1D7 (mid-blue), #465776 (slate), #09101D (deep navy), #A0A9BC (muted), #F3B440 (amber accent)
+*/
+
+/* ── FONTS ─────────────────────────────────────────────── */
+:root {
+	--font-heading : 'Poppins', Helvetica, sans-serif;
+	--font-body    : 'Roboto Mono', 'Courier New', monospace;
+
+	--col-deep     : #09101D;
+	--col-slate    : #465776;
+	--col-mid      : #84A1D7;
+	--col-muted    : #A0A9BC;
+	--col-accent   : #F3B440;
+	--col-white    : #EEF2FA;
+	--col-border   : rgba(132, 161, 215, 0.18);
+}
+
+/* ── BASE ───────────────────────────────────────────────── */
+body, input, select, textarea {
+	font-family: var(--font-body);
+	color: var(--col-muted);
+}
+
+/* Background — deep navy instead of image bg */
+#wrapper > .bg {
+	background-color : var(--col-deep);
+	background-image : 
+		url("../../images/overlay.png"),
+		linear-gradient(160deg, rgba(70, 87, 118, 0.35) 0%, rgba(9, 16, 29, 0.8) 60%),
+		url("../../images/bg.jpg");
+}
+
+/* ── TYPOGRAPHY ─────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+	font-family : var(--font-heading);
+	font-weight : 700;
+	color       : var(--col-white);
+	letter-spacing: -0.01em;
+}
+
+h1 { font-weight: 800; }
+h2 { font-weight: 700; }
+
+p { color: var(--col-muted); }
+
+a {
+	color            : var(--col-mid);
+	border-bottom-color: rgba(132, 161, 215, 0.4);
+}
+
+a:hover {
+	color: var(--col-accent) !important;
+	border-bottom-color: transparent;
+}
+
+strong, b { color: var(--col-white); }
+
+/* ── INTRO ──────────────────────────────────────────────── */
+#intro {
+	color: var(--col-white);
+}
+
+#intro h1 {
+	font-family  : var(--font-heading);
+	font-weight  : 800;
+	font-size    : 5.5rem;
+	line-height  : 1.0;
+	color        : var(--col-white);
+	letter-spacing: -0.03em;
+}
+
+#intro p {
+	font-family : var(--font-body);
+	color       : var(--col-muted);
+	font-size   : 0.95rem;
+}
+
+#intro p strong {
+	color: var(--col-accent);
+	font-weight: 500;
+}
+
+#intro a { color: var(--col-mid); }
+#intro a:hover { color: var(--col-accent) !important; }
+
+#intro strong, #intro b { color: var(--col-white); }
+
+/* ── HEADER / LOGO ──────────────────────────────────────── */
+#header .logo {
+	font-family   : var(--font-heading);
+	font-weight   : 800;
+	font-size     : 1.6rem;
+	letter-spacing: 0.08em;
+	border-color  : var(--col-mid);
+	color         : var(--col-mid);
+}
+
+#header .logo:hover {
+	border-color: var(--col-accent) !important;
+	color       : var(--col-accent) !important;
+}
+
+#header, #header a { color: var(--col-white); }
+
+/* ── NAV ────────────────────────────────────────────────── */
+#nav {
+	background: rgba(9, 16, 29, 0.82);
+	backdrop-filter: blur(10px);
+}
+
+#nav ul.links li a {
+	font-family   : var(--font-heading);
+	font-weight   : 600;
+	font-size     : 0.75rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color         : var(--col-muted);
+}
+
+#nav ul.links li a:hover {
+	color: var(--col-accent) !important;
+	background-color: rgba(243, 180, 64, 0.07);
+}
+
+#nav ul.links li.active {
+	background-color: var(--col-slate);
+}
+
+#nav ul.links li.active a {
+	color: var(--col-white);
+}
+
+#nav ul.links li.active a:hover {
+	color: var(--col-accent) !important;
+}
+
+#nav a,
+#nav ul.icons li a { color: var(--col-muted); }
+#nav ul.icons li a:hover:before { color: var(--col-accent); }
+#nav ul.icons.alt li .icon:before { box-shadow: inset 0 0 0 2px var(--col-border); }
+
+/* ── DATE SPAN / TAGS ───────────────────────────────────── */
+header > .date,
+.post header .date,
+article header .date {
+	font-family   : var(--font-body);
+	font-size     : 0.72rem;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color         : var(--col-accent);
+}
+
+/* Decorative lines flanking .date in major header */
+header.major > .date:before,
+header.major > .date:after {
+	border-top-color: var(--col-border);
+}
+
+/* ── MAIN CONTENT AREA ──────────────────────────────────── */
+#main {
+	background-color: #0f1826;
+}
+
+#main > * {
+	border-top-color: var(--col-border);
+}
+
+/* ── FEATURED POST ──────────────────────────────────────── */
+.post.featured header.major h2 a,
+.post header h2 a {
+	color: var(--col-white);
+}
+
+.post.featured header.major h2 a:hover,
+.post header h2 a:hover {
+	color: var(--col-accent) !important;
+}
+
+.post.featured header.major p {
+	color      : var(--col-muted);
+	font-family: var(--font-body);
+	font-size  : 0.9rem;
+}
+
+/* ── VIDEO & CONTAINER FIX ──────────────────────────────── */
+
+/* Ensure the row doesn't bleed out with negative margins */
+.full-content .row {
+    width: 100% !important;
+    margin: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Ensure the columns inside the row behave */
+.full-content .row > div {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.video-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative;
+    overflow: hidden;
+    background: #09101D;
+    border-radius: 6px;
+    border: 1px solid var(--col-border);
+    /* This ensures the container holds the shape */
+    display: block; 
+}
+
+.feature-video {
+    /* Critical: Force the video to be no wider than the container */
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important; 
+    border-radius: 4px;
+}
+
+/* Remove the height: 100% which might be forcing the stretch */
+.row > .video-container {
+    height: auto;
+}
+
+/* ── UPDATED EXPANDED CONTENT PADDING ────────────────────── */
+
+article.expanded .full-content {
+    display: block;
+    opacity: 1;
+    margin-top: 2rem;
+    /* Added padding to prevent content from touching the article borders */
+    padding: 1rem 2rem; 
+    border-top: 1px solid var(--col-border);
+    transition: opacity 0.5s ease-in;
+}
+
+/* ── POSTS GRID LOGIC ────────────────────────────────────── */
+
+#main > .posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 2rem;
+    width: 100%;
+    align-items: start; /* Prevents items from stretching to match tallest height */
+}
+
+#main > .posts > article {
+    width: 100%;
+    margin: 0; /* Remove default margins that might cause "cutting" */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Expanded State: Spans both columns */
+article.expanded {
+    grid-column: 1 / -1 !important; 
+    width: 100% !important;
+    background-color: #162235 !important;
+    padding-bottom: 3rem;
+    z-index: 10;
+}
+
+/* Internal content logic */
+article .full-content {
+    display: none; /* Hide completely when not expanded */
+    opacity: 0;
+}
+
+article.expanded .full-content {
+    display: block;
+    max-height: none; /* Let the content define the height */
+    opacity: 1;
+    margin-top: 2rem;
+    padding: 2rem;
+    transition: opacity 0.5s ease-in;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 980px) {
+    #main > .posts {
+        grid-template-columns: 1fr; /* Drop to one column on mobile */
+    }
+}
+
+/* ── BUTTONS ────────────────────────────────────────────── */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+	font-family   : var(--font-heading);
+	font-weight   : 600;
+	letter-spacing: 0.06em;
+	box-shadow    : inset 0 0 0 2px var(--col-slate);
+	color         : var(--col-mid) !important;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+	box-shadow: inset 0 0 0 2px var(--col-accent);
+	color     : var(--col-accent) !important;
+}
+
+.button.primary,
+input[type="submit"].primary {
+	background-color: var(--col-slate);
+	box-shadow      : none;
+	color           : var(--col-white) !important;
+}
+
+.button.primary:hover,
+input[type="submit"].primary:hover {
+	background-color: var(--col-accent);
+	color           : var(--col-deep) !important;
+}
+
+/* Intro buttons */
+#intro .button {
+	box-shadow: inset 0 0 0 2px var(--col-mid);
+	color     : var(--col-white) !important;
+}
+#intro .button:hover {
+	box-shadow: inset 0 0 0 2px var(--col-accent);
+	color     : var(--col-accent) !important;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+#footer {
+	background-color: #080e18;
+	color           : var(--col-muted);
+}
+
+#footer h3 {
+	font-family   : var(--font-heading);
+	font-weight   : 700;
+	font-size     : 0.75rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color         : var(--col-mid);
+}
+
+#footer p, #footer label {
+	font-family: var(--font-body);
+	font-size  : 0.8rem;
+	color      : var(--col-muted);
+}
+
+#footer a {
+	color            : var(--col-mid);
+	border-bottom-color: rgba(132,161,215,0.3);
+}
+
+#footer a:hover {
+	color: var(--col-accent) !important;
+}
+
+#footer > section {
+	border-left-color: var(--col-border);
+}
+
+#footer > section.split > section {
+	border-top-color: var(--col-border);
+}
+
+#footer input[type="text"],
+#footer input[type="email"],
+#footer textarea {
+	border-color    : var(--col-slate);
+	background-color: rgba(70, 87, 118, 0.1);
+	color           : var(--col-white);
+}
+
+#footer input[type="text"]:focus,
+#footer input[type="email"]:focus,
+#footer textarea:focus {
+	border-color: var(--col-accent);
+}
+
+#footer .button {
+	box-shadow: inset 0 0 0 2px var(--col-slate);
+	color     : var(--col-mid) !important;
+}
+#footer .button:hover {
+	box-shadow: inset 0 0 0 2px var(--col-accent);
+	color     : var(--col-accent) !important;
+}
+
+#footer ul.icons.alt li .icon:before {
+	box-shadow: inset 0 0 0 2px var(--col-slate);
+}
+#footer ul.icons.alt li a.icon:hover:before {
+	box-shadow: inset 0 0 0 2px var(--col-accent);
+	color     : var(--col-accent);
+}
+
+/* ── COPYRIGHT ──────────────────────────────────────────── */
+#copyright {
+	font-family   : var(--font-heading);
+	font-weight   : 600;
+	color         : rgba(160, 169, 188, 0.35);
+	letter-spacing: 0.05em;
+}
+
+#copyright a { color: inherit; }
+#copyright a:hover { color: var(--col-accent) !important; }
+
+#copyright ul li {
+	border-left-color: rgba(160, 169, 188, 0.2);
+}
+
+/* ── MISC ELEMENTS ──────────────────────────────────────── */
+blockquote {
+	border-left-color: var(--col-accent);
+	font-family      : var(--font-body);
+}
+
+code {
+	background  : rgba(132, 161, 215, 0.07);
+	border-color: var(--col-border);
+	font-family : var(--font-body);
+}
+
+hr { border-bottom-color: var(--col-border); }
+
+/* Pagination */
+.pagination a {
+	border-color: var(--col-slate);
+	color       : var(--col-mid) !important;
+	font-family : var(--font-heading);
+	font-weight : 600;
+}
+
+.pagination a:hover {
+	border-color: var(--col-accent);
+	color       : var(--col-accent) !important;
+}
+
+/* Mobile nav panel */
+#navPanel {
+	background: #0f1826;
+}
+
+#navPanel .links li {
+	border-top-color: var(--col-border);
+}
+
+#navPanel .links li a {
+	font-family   : var(--font-heading);
+	font-weight   : 600;
+	letter-spacing: 0.06em;
+	color         : var(--col-muted);
+}
+
+#navPanelToggle {
+	font-family: var(--font-heading);
+	font-weight: 600;
+}
+
+#navPanelToggle.alt {
+	background-color: rgba(9, 16, 29, 0.9);
+	color           : var(--col-mid);
+}
+
+/* ── ABOUT / GENERIC PAGE SPECIFIC ─────────────────────── */
+.post h2 {
+	font-family  : var(--font-heading);
+	font-weight  : 700;
+	color        : var(--col-white);
+	margin-top   : 2.5rem;
+	margin-bottom: 0.75rem;
+	font-size    : 1.4rem;
+}
+
+.post ul {
+	list-style  : disc;
+	padding-left: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.post ul li {
+	font-family: var(--font-body);
+	font-size  : 0.85rem;
+	color      : var(--col-muted);
+	padding    : 0.2rem 0;
+}
+
+.post ul li strong {
+	color: var(--col-white);
+}
+
+.post p {
+	font-family: var(--font-body);
+	font-size  : 0.88rem;
+	line-height: 1.9;
+}
+
+/* Header major on generic/about page */
+.post header.major span.date {
+	font-size     : 0.72rem;
+	letter-spacing: 0.2em;
+	color         : var(--col-accent);
+}
+
+.post header.major h1 {
+	font-size  : 3.5rem;
+	font-weight: 800;
+	color      : var(--col-white);
+}
+
+.post header.major p {
+	font-family: var(--font-body);
+	font-size  : 0.88rem;
+	color      : var(--col-muted);
+}
+
+/* ── FORM LABELS ────────────────────────────────────────── */
+label {
+	font-family   : var(--font-heading);
+	font-weight   : 600;
+	letter-spacing: 0.06em;
+	color         : var(--col-mid);
+}
+
+/* ── RESPONSIVE TWEAKS ──────────────────────────────────── */
+@media screen and (max-width: 736px) {
+	#intro h1 { font-size: 3rem; }
+	.post header.major h1 { font-size: 2.2rem; }
+}
